@@ -146,7 +146,12 @@ Returns: str
 '''
 def findSentiment(classifier, message):
     score = classifier.polarity_scores(message)['compound']
-    return
+    if score<-0.1:
+        return "negative"
+    if score>0.1:
+        return "positive"
+    return "neutral"
+
 
 
 '''
@@ -310,13 +315,13 @@ def scatterPlot(xValues, yValues, labels, title):
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    test.testAddColumns()
     #print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
     #test.week1Tests()
     #print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     #test.runWeek1()
 
     ## Uncomment these for Week 2 ##
+    test.testFindSentiment()
     """print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
     test.week2Tests()
     print("\n" + "#"*15 + " WEEK 2 OUTPUT " + "#" * 15 + "\n")
