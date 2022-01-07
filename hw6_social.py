@@ -117,7 +117,23 @@ Parameters: dataframe ; dataframe
 Returns: None
 '''
 def addColumns(data, stateDf):
-    return
+    names=[]
+    position=[]
+    state=[]
+    region=[]
+    hashtags=[]
+    for a,b in data.iterrows():
+        names.append(parseName(b["label"]))
+        position.append(parsePosition(b["label"]))
+        state.append(parseState(b["label"]))
+        region.append(getRegionFromState(stateDf,parseState(b["label"])))
+        hashtags.append(findHashtags(b["text"]))
+    data['name']=names
+    data['position']=position
+    data['state']=state
+    data['region']=region
+    data['hashtags']=hashtags
+    return None
 
 
 ### PART 2 ###
@@ -294,7 +310,7 @@ def scatterPlot(xValues, yValues, labels, title):
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    test.testGetRegionFromState()
+    test.testAddColumns()
     #print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
     #test.week1Tests()
     #print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
