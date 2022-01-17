@@ -162,7 +162,11 @@ Returns: None
 '''
 def addSentimentColumn(data):
     classifier = SentimentIntensityAnalyzer()
-    return
+    list=[]
+    for a,b in data.iterrows():
+        list.append(findSentiment(classifier,b['text']))
+    data['sentiment'] = list
+    return None
 
 
 '''
@@ -319,14 +323,26 @@ if __name__ == "__main__":
     #test.week1Tests()
     #print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     #test.runWeek1()
+    #test.testMakeDataFrame()
+    #test.testParseName()
+    #test.testParsePosition()
+    #test.testParseState()
+    #test.testFindHashtags()
+    #test.testGetRegionFromState()
+    #test.testAddColumns()
+    #test.testFindSentiment()
+    test.testAddSentimentColumn()
 
     ## Uncomment these for Week 2 ##
-    test.testFindSentiment()
     """print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
     test.week2Tests()
     print("\n" + "#"*15 + " WEEK 2 OUTPUT " + "#" * 15 + "\n")
     test.runWeek2()"""
-
+    df = makeDataFrame("data/politicaldata.csv")
+    stateDf = makeDataFrame("data/statemappings.csv")
+    addColumns(df, stateDf)
+    addSentimentColumn(df)
+    
     ## Uncomment these for Week 3 ##
     """print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
     test.runWeek3()"""
