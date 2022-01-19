@@ -288,9 +288,13 @@ Parameters: dict mapping strs to ints ; dict mapping strs to ints ; int ; str
 Returns: None
 '''
 def graphTopNStates(stateCounts, stateFeatureCounts, n, title):
-    
-
-    return
+    dicts={}
+    for l,m in stateFeatureCounts.items():
+        for a,b in stateCounts.items():
+            if a==l:
+                dicts[a]=m/b
+    new=mostCommonHashtags(dicts, n)
+    graphStateCounts(new,title)
 
 
 '''
