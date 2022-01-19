@@ -271,8 +271,15 @@ Returns: None
 '''
 def graphStateCounts(stateCounts, title):
     import matplotlib.pyplot as plt
-    return
-
+    state=[i for i in stateCounts.keys()]
+    number=[j for j in stateCounts.values()]
+    plt.bar(state, number, width=0.6)
+    plt.xticks(ticks=list(range(len(state))), labels=state, rotation="vertical")
+    plt.xlabel("States")
+    plt.ylabel("Values of states")
+    plt.title(title)
+    plt.show()
+    
 
 '''
 graphTopNStates(stateCounts, stateFeatureCounts, n, title)
@@ -281,6 +288,8 @@ Parameters: dict mapping strs to ints ; dict mapping strs to ints ; int ; str
 Returns: None
 '''
 def graphTopNStates(stateCounts, stateFeatureCounts, n, title):
+    
+
     return
 
 
@@ -380,16 +389,19 @@ if __name__ == "__main__":
     test.week2Tests()
     print("\n" + "#"*15 + " WEEK 2 OUTPUT " + "#" * 15 + "\n")
     test.runWeek2()"""
-    df = makeDataFrame("data/politicaldata.csv")
-    stateDf = makeDataFrame("data/statemappings.csv")
-    addColumns(df, stateDf)
-    addSentimentColumn(df)
+    #df = makeDataFrame("data/politicaldata.csv")
+    #stateDf = makeDataFrame("data/statemappings.csv")
+    #addColumns(df, stateDf)
+    #addSentimentColumn(df)
     #test.testGetDataCountByState(df)
     #test.testGetDataForRegion(df)
     #test.testGetHashtagRates(df)
     #test.testMostCommonHashtags(df)
-    test.testGetHashtagSentiment(df)
+    #test.testGetHashtagSentiment(df)
     
-    ## Uncomment these for Week 3 ##
-    """print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
-    test.runWeek3()"""
+    ## Uncomment these for Week 3 ## 
+    print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
+    test.runWeek3()
+    
+    
+    
